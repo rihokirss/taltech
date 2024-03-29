@@ -70,12 +70,4 @@ car_description_input = st.text_area("Car Model Description", "", key="car_descr
 if st.button("Generate Description"):
     if len(car_description_input.split(" ")) > 700:
         st.warning("Please enter content with fewer than 700 words.")
-    else:
-        openai_api_key = st.text_input("OpenAI API Key", "", type="password")
-        if openai_api_key:
-            llm = load_LLM(openai_api_key=openai_api_key)
-            prompt_with_content = prompt.format(features=",".join(features_input), budget=budget_input, content=car_description_input)
-            formatted_content = llm(prompt_with_content)
-            st.write(formatted_content)
-        else:
-            st.warning('Please enter an OpenAI API Key to proceed.')
+

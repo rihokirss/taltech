@@ -63,7 +63,7 @@ if openai_api_key:
         else:
             llm = load_llm(openai_api_key)
             prompt_with_content = prompt_template.format(features=",".join(features_input), budget=budget_input, content=car_description_input)
-            formatted_content = llm(prompt_with_content)
+            formatted_content = llm(prompt_with_content, max_tokens=1024) 
             st.write(formatted_content)
 else:
     st.warning('Please enter an OpenAI API Key to proceed.')

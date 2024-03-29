@@ -46,6 +46,20 @@ with col1:
 with col2:
     st.image(image='luxurycarlogo.jpg.webp', caption='Exquisite Vehicles for Discerning Buyers')
 
+def get_api_key():
+    """Küsib OpenAI API võtit, kui see pole keskkonnamuutujana määratud."""
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    if not openai_api_key:  # Kui keskkonnamuutujas võtit pole, küsi kasutajalt
+        openai_api_key = st.text_input("OpenAI API Key", "", type="password", help="Enter your OpenAI API key here if not set as an environment variable.")
+    return openai_api_key
+
+# Siin kutsutakse funktsiooni get_api_key, et saada OpenAI API võti
+openai_api_key = get_api_key()
+
+if not openai_api_key:
+    st.warning('Please enter an OpenAI API Key to proceed.')
+    st.stop()  # Peatame edasise täitmise, kui võtit ei ole antud
+
 # Defineerime kasutaja sisendi saamiseks vajalikud funktsioonid
 features_input = st.multiselect("Preferred Features", ['Speed', 'Design', 'Comfort', 'Latest Technology', 'Eco-friendly'], key="features_input")
 

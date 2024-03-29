@@ -44,7 +44,7 @@ with col1:
     """)
 
 with col2:
-    st.image(image='luxurycarlogo.jpg', caption='Exquisite Vehicles for Discerning Buyers')
+    st.image(image='luxurycarlogo.jpg.webp', caption='Exquisite Vehicles for Discerning Buyers')
 
 # Defineerime kasutaja sisendi saamiseks vajalikud funktsioonid
 features_input = st.multiselect("Preferred Features", ['Speed', 'Design', 'Comfort', 'Latest Technology', 'Eco-friendly'], key="features_input")
